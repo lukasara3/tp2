@@ -13,10 +13,10 @@ void ImprimirRotulos(No *vertices, int tamanho) {
 int main() {
 
   Grafo meuGrafo;
-  int n; // vertices
-  // char c; //ordenação
+  int n;  // vertices
+  char c; // ordenação
 
-  cin >> n; // primeira linha
+  cin >> c >> n; // primeira linha
 
   for (int i = 0; i < n; i++) {
     int m; // quantidade de vizinhos
@@ -46,21 +46,41 @@ int main() {
 
   No *vertice = meuGrafo.getNos();
 
-  // Bolha(vertice, n);
+  if (meuGrafo.ColoracaoGulosa(vertice, n)) {
+    switch (c) {
+    case 'b':
+      Bolha(vertice, n);
+      break;
 
-  // Selecao(vertice, n); OK
+    case 's':
+      Selecao(vertice, n);
+      break;
 
-  // Insercao(vertice, n); OK
+    case 'i':
+      Insercao(vertice, n);
+      break;
 
-  // MergeSort(vertice, 0, n - 1);
+    case 'q':
+      QuickSort(vertice, n);
+      break;
 
-  // QuickSort(vertice, n);
+    case 'm':
+      MergeSort(vertice, 0, n - 1);
+      break;
 
-  // HeapSort(vertice, n);
+    case 'p':
+      Heapsort(vertice, n);
+      break;
 
-  MeuMetodo(vertice, n);
-
-  ImprimirRotulos(vertice, n);
+    case 'y':
+      MeuMetodo(vertice, n);
+      break;
+    }
+    cout << "1";
+    ImprimirRotulos(vertice, n);
+  } else {
+    cout << "0";
+  }
 
   return 0;
 }
